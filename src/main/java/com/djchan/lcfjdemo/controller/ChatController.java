@@ -60,7 +60,7 @@ public class ChatController {
     }
 
     @GetMapping("/test")
-    public String resetCodeHelper() {
+    public String testCodeHelper() {
         String result = codeHelperService.chat("你好，我是DJChan");
         log.info("AI 输出：" + result);
         result = codeHelperService.chat("我是谁？");

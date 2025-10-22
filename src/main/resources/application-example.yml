@@ -4,13 +4,13 @@ spring:
   # mysql
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306?useInformationSchema=true&characterEncoding=utf-8
+    url: jdbc:mysql://localhost:3306?useInformationSchema=true&characterEncoding=utf-8  # TODO: 修改为你的数据库URL
     username: root
     password: 123456
   # Redis配置
   data:
     redis:
-      host: localhost
+      host: localhost     # TODO
       port: 6379
       database: 0
       timeout: 3000
@@ -24,16 +24,11 @@ spring:
 langchain4j:
   open-ai:
     chat-model:
-      api-key: sk-ab245b77072143e288d44c2c52e69cf2
+      api-key: sk-abcdxxxxxxxxxxxxxxxxx   # TODO: 替换成你的apikey 北京APIKEY申请:https://bailian.console.aliyun.com/?tab=model&spm=0.0.0.i1#/api-key
       model-name: qwen-max
       base-url: https://dashscope.aliyuncs.com/compatible-mode/v1
       log-requests: true
       log-responses: true
-#  community:
-#    dashscope:
-#      chat-model:
-#        model-name: qwen-max
-#        api-key: sk-ab245b77072143e288d44c2c52e69cf2
 
 server:
   port: 8901
@@ -45,7 +40,7 @@ server:
 springdoc:
   group-configs:
     - group: 'default'
-      packages-to-scan: com.daque.controller
+      packages-to-scan: com.djchan.lcfjdemo.controller  # TODO: 修改为你的controller路径
 # knife4j
 knife4j:
   enable: true
