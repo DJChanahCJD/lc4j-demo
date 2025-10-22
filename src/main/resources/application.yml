@@ -1,3 +1,3 @@
 spring:
   profiles:
-    active: local   # TODO: ??application-local.yml, ??application-example.yml?????
+    active: local   # TODO: 创建application-local.yml, 参考application-example.yml进行配置

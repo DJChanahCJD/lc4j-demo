@@ -1,5 +1,6 @@
 package com.djchan.lcfjdemo.ai.config;
 
+import dev.langchain4j.model.chat.request.ResponseFormat;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
