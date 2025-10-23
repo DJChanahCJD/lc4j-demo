@@ -1,14 +1,10 @@
 package com.djchan.lcfjdemo.ai.config;
 
-import dev.langchain4j.data.message.ChatMessage;
-import dev.langchain4j.model.chat.request.ChatRequest;
 import dev.langchain4j.model.chat.request.ResponseFormat;
 import dev.langchain4j.model.chat.request.json.JsonObjectSchema;
 import dev.langchain4j.model.chat.request.json.JsonSchema;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import java.util.List;
 
 import static dev.langchain4j.model.chat.request.ResponseFormatType.JSON;
 

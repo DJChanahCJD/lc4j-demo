@@ -1,17 +1,13 @@
 package com.djchan.lcfjdemo.controller;
 
-import com.djchan.lcfjdemo.ai.service.RagTestService;
-import dev.langchain4j.data.document.Document;
-import dev.langchain4j.data.document.loader.FileSystemDocumentLoader;
+import com.djchan.lcfjdemo.ai.service.EasyRagTestService;
+import com.djchan.lcfjdemo.ai.service.MathToolService;
 import dev.langchain4j.data.message.AiMessage;
 import dev.langchain4j.data.message.ChatMessage;
 import dev.langchain4j.data.message.SystemMessage;
 import dev.langchain4j.data.message.UserMessage;
-import dev.langchain4j.data.segment.TextSegment;
 import dev.langchain4j.model.chat.ChatModel;
 import dev.langchain4j.model.chat.response.ChatResponse;
-import dev.langchain4j.store.embedding.EmbeddingStoreIngestor;
-import dev.langchain4j.store.embedding.inmemory.InMemoryEmbeddingStore;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
@@ -28,17 +24,20 @@ import com.djchan.lcfjdemo.ai.service.CodeHelperService;
 @RestController
 @RequestMapping("/chat")
 public class ChatController {
-    private final RagTestService ragTestService;
+    private final EasyRagTestService easyRagTestService;
     ChatModel chatModel;
     CodeHelperService codeHelperService;
     RedisChatMemoryStore redisChatMemoryStore;
 
+    MathToolService mathToolService;
+
     public ChatController(ChatModel chatModel, CodeHelperService friendService,
-                          RedisChatMemoryStore redisChatMemoryStore, RagTestService ragTestService) {
+                          RedisChatMemoryStore redisChatMemoryStore, EasyRagTestService ragTestService, MathToolService mathToolService) {
         this.chatModel = chatModel;
         this.codeHelperService = friendService;
         this.redisChatMemoryStore = redisChatMemoryStore;
-        this.ragTestService = ragTestService;
+        this.easyRagTestService = ragTestService;
+        this.mathToolService = mathToolService;
     }
 
     private static final String SYSTEM_MESSAGE = """
@@ -95,13 +94,16 @@ public class ChatController {
                 .toString();
     }
 
-    @GetMapping("/with-rag")
-    public String ChatwithRag(@RequestParam String message) {
-        List<Document> documents = FileSystemDocumentLoader.loadDocuments("src/main/resources/rag-docs");
-        InMemoryEmbeddingStore<TextSegment> embeddingStore = new InMemoryEmbeddingStore<>();
-        EmbeddingStoreIngestor.ingest(documents, embeddingStore);
+    @GetMapping("/with-easy-rag")
+    public String ChatWithEasyRag(@RequestParam String message) {
+        String answer = easyRagTestService.chat(message);
+        log.info("AI 输出：" + answer);
+        return answer;
+    }
 
-        String answer = ragTestService.chat(message);
+    @GetMapping("/with-tools")
+    public String ChatWithTools(@RequestParam String message) {
+        String answer = mathToolService.chat(message);
         log.info("AI 输出：" + answer);
         return answer;
     }

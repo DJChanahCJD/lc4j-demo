@@ -13,7 +13,7 @@ import dev.langchain4j.store.embedding.EmbeddingStoreIngestor;
 import dev.langchain4j.store.embedding.inmemory.InMemoryEmbeddingStore;
 
 @Configuration
-public class RagConfig {
+public class EasyRagConfig {
     @Bean
     EmbeddingStoreContentRetriever embeddingStoreContentRetriever() {
         List<Document> documents = FileSystemDocumentLoader.loadDocuments("src/main/resources/rag-docs");
