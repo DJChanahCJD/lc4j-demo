@@ -1,3 +1,4 @@
+###
 GET http://localhost:8901/api/chat/with-tools?
     message="123456789的平方根是多少"
 
@@ -8,3 +9,6 @@ GET http://localhost:8901/api/chat/with-easy-rag?
 
 <> 2025-10-22T214316.200.txt
 
+###
+GET http://localhost:8901/api/chat/with-mcp?
+    message="今日大事"

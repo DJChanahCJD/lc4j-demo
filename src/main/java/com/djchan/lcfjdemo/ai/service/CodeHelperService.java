@@ -6,7 +6,7 @@ import dev.langchain4j.service.UserMessage;
 import dev.langchain4j.service.spring.AiService;
 
 // 代码助手智能体
-@AiService()
+@AiService
 public interface CodeHelperService {
 
     @SystemMessage(fromResource = "prompts/code-helper.txt")

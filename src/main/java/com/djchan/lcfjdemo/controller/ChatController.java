@@ -2,6 +2,7 @@ package com.djchan.lcfjdemo.controller;
 
 import com.djchan.lcfjdemo.ai.service.EasyRagTestService;
 import com.djchan.lcfjdemo.ai.service.MathToolService;
+import com.djchan.lcfjdemo.ai.service.McpService;
 import dev.langchain4j.data.message.AiMessage;
 import dev.langchain4j.data.message.ChatMessage;
 import dev.langchain4j.data.message.SystemMessage;
@@ -12,6 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -31,13 +33,16 @@ public class ChatController {
 
     MathToolService mathToolService;
 
+    McpService  mcpService;
+
     public ChatController(ChatModel chatModel, CodeHelperService friendService,
-                          RedisChatMemoryStore redisChatMemoryStore, EasyRagTestService ragTestService, MathToolService mathToolService) {
+                          RedisChatMemoryStore redisChatMemoryStore, EasyRagTestService ragTestService, MathToolService mathToolService, McpService mcpService) {
         this.chatModel = chatModel;
         this.codeHelperService = friendService;
         this.redisChatMemoryStore = redisChatMemoryStore;
         this.easyRagTestService = ragTestService;
         this.mathToolService = mathToolService;
+        this.mcpService = mcpService;
     }
 
     private static final String SYSTEM_MESSAGE = """
@@ -104,6 +109,13 @@ public class ChatController {
     @GetMapping("/with-tools")
     public String ChatWithTools(@RequestParam String message) {
         String answer = mathToolService.chat(message);
+        log.info("AI 输出：" + answer);
+        return answer;
+    }
+
+    @GetMapping("/with-mcp")
+    public String ChatWithMcp(@RequestParam String message) {
+        String answer = mcpService.chat(message);
         log.info("AI 输出：" + answer);
         return answer;
     }

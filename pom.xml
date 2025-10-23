@@ -106,6 +106,13 @@
             <version>1.7.1-beta14</version>
         </dependency>
 
+        <!-- 引入MCP https://mvnrepository.com/artifact/dev.langchain4j/langchain4j-mcp -->
+        <dependency>
+            <groupId>dev.langchain4j</groupId>
+            <artifactId>langchain4j-mcp</artifactId>
+            <version>1.7.1-beta14</version>
+        </dependency>
+
         <!-- Redis 依赖 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

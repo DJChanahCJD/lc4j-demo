@@ -29,6 +29,9 @@ langchain4j:
       base-url: https://dashscope.aliyuncs.com/compatible-mode/v1
       log-requests: true
       log-responses: true
+# 为方便测试MCP功能https://mcp.so/server/zhipu-web-search/BigModel?tab=content, 引入智谱AI的MCP服务 https://www.bigmodel.cn/usercenter/proj-mgmt/apikeys
+bigmodel:
+  api-key: 657f084907174e1693da7a2e7f8615dc.4etNrOB87OqW7hnC
 
 server:
   port: 8901
