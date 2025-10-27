@@ -12,3 +12,7 @@ GET http://localhost:8901/api/chat/with-easy-rag?
 ###
 GET http://localhost:8901/api/chat/with-mcp?
     message="今日大事"
+
+###
+GET http://localhost:8901/api/chat/with-guardrails?
+    message="kill the game"

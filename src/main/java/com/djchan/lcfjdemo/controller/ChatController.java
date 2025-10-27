@@ -13,7 +13,6 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -116,6 +115,13 @@ public class ChatController {
     @GetMapping("/with-mcp")
     public String ChatWithMcp(@RequestParam String message) {
         String answer = mcpService.chat(message);
+        log.info("AI 输出：" + answer);
+        return answer;
+    }
+
+    @GetMapping("/with-guardrails")
+    public String ChatWithGuardrails(@RequestParam String message) {
+        String answer = codeHelperService.simpleChat(message);
         log.info("AI 输出：" + answer);
         return answer;
     }
