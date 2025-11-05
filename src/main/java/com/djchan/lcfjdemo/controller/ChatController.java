@@ -10,6 +10,7 @@ import dev.langchain4j.data.message.UserMessage;
 import dev.langchain4j.model.chat.ChatModel;
 import dev.langchain4j.model.chat.response.ChatResponse;
 import lombok.extern.slf4j.Slf4j;
+import reactor.core.publisher.Flux;
 
 import java.util.List;
 
@@ -28,7 +29,7 @@ public class ChatController {
     private final EasyRagTestService easyRagTestService;
 
     ChatModel chatModel;
-    
+
     CodeHelperService codeHelperService;
     RedisChatMemoryStore redisChatMemoryStore;
 
@@ -128,4 +129,8 @@ public class ChatController {
         return answer;
     }
 
+    @GetMapping("/stream")
+    public Flux<String> streamChat(@RequestParam String message) {
+        return codeHelperService.streamChat(message).map(chunk -> "data: " + chunk + "\n\n");
+    }
 }

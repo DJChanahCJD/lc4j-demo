@@ -1,5 +1,5 @@
-# Java 学习指南
+# Java Learning Guide
 
-- 必须安装 JDK 17 或以上版本
-- 必须安装 Maven 3.8 或以上版本
-- 必须安装 IntelliJ IDEA 或 Eclipse 等 IDE
+1. You must install JDK 17 or above version.
+2. You must install Maven 3.8 or above version.
+3. You must install IntelliJ IDEA or Eclipse etc.

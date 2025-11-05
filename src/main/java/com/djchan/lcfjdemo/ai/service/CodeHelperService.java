@@ -7,6 +7,7 @@ import dev.langchain4j.service.SystemMessage;
 import dev.langchain4j.service.UserMessage;
 import dev.langchain4j.service.guardrail.InputGuardrails;
 import dev.langchain4j.service.spring.AiService;
+import reactor.core.publisher.Flux;
 
 // 代码助手智能体
 @AiService
@@ -20,4 +21,5 @@ public interface CodeHelperService {
 
     String chat(@MemoryId String memoryId, @UserMessage String message);
 
+    Flux<String> streamChat(String message);
 }
