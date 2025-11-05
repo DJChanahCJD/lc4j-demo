@@ -26,7 +26,9 @@ import com.djchan.lcfjdemo.ai.service.CodeHelperService;
 @RequestMapping("/chat")
 public class ChatController {
     private final EasyRagTestService easyRagTestService;
+
     ChatModel chatModel;
+    
     CodeHelperService codeHelperService;
     RedisChatMemoryStore redisChatMemoryStore;
 
