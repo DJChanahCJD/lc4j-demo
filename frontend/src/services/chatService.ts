@@ -23,13 +23,6 @@ export class ChatService {
       }
     };
 
-    // 处理连接关闭
-    eventSource.close = () => {
-      if (onComplete) {
-        onComplete();
-      }
-    };
-
     // 处理错误
     eventSource.onerror = (error) => {
       console.error('SSE连接错误:', error);
@@ -38,6 +31,12 @@ export class ChatService {
         onComplete();
       }
     };
+
+    // 监听服务端主动关闭流
+  eventSource.addEventListener('end', () => {
+    eventSource.close(); // ✅ 正常关闭
+    if (onComplete) onComplete();
+  });
 
     return eventSource;
   }

@@ -37,12 +37,12 @@ public class ChatController {
 
     McpService  mcpService;
 
-    public ChatController(ChatModel chatModel, CodeHelperService friendService,
-                          RedisChatMemoryStore redisChatMemoryStore, EasyRagTestService ragTestService, MathToolService mathToolService, McpService mcpService) {
+    public ChatController(ChatModel chatModel, CodeHelperService codeHelperService,
+                          RedisChatMemoryStore redisChatMemoryStore, EasyRagTestService easyRagTestService, MathToolService mathToolService, McpService mcpService) {
         this.chatModel = chatModel;
-        this.codeHelperService = friendService;
+        this.codeHelperService = codeHelperService;
         this.redisChatMemoryStore = redisChatMemoryStore;
-        this.easyRagTestService = ragTestService;
+        this.easyRagTestService = easyRagTestService;
         this.mathToolService = mathToolService;
         this.mcpService = mcpService;
     }
